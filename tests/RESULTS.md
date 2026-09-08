@@ -2,12 +2,13 @@
 
 日期：2026-09-08
 
-- Node 单元测试：7/7 通过。覆盖 RIFF 长度、奇数字节对齐、VP8L 透明标记、损坏数据拒绝、异步完整 Blob 替换、重复启用、停止/过期恢复、标签页状态隔离。
-- 浏览器集成测试：8/8 通过。实际运行浏览器 ImageDecoder / Canvas / DataTransfer；测试 3 帧透明 GIF 转 WebP、80/130/210ms 帧时长、清除残影、原始 WebP 字节不变、手动导出、自动填图保存、动态 input、取消、入口缺失及保存超时回退。
+- Node 单元测试：8/8 通过。覆盖 RIFF 长度、奇数字节对齐、VP8L 透明标记、损坏数据拒绝、异步完整 Blob 替换、重复启用、停止/过期恢复、标签页状态隔离，以及作者内容字段和 HTTPS 链接校验。
+- 浏览器集成测试：7/7 通过。实际运行浏览器 ImageDecoder / Canvas / DataTransfer；测试 3 帧透明 GIF 转 WebP、80/130/210ms 帧时长、清除残影、原始 WebP 字节不变、手动导出、自动填图保存、动态 input、取消及入口缺失回退。
 - 弹窗交互：通过文件选择器选择合成 GIF，转换完成显示 3 帧预览；启用与停止回执正常；静态 WebP 被拒绝并保留旧素材；删除图片后替换按钮禁用；截图检查无重叠或截断。
 - 所有运行时 JavaScript 语法检查通过。Manifest 引用文件完整。发布 ZIP 解压完整性与文件清单检查通过。
-- Edge 商店发布审查：Manifest V3 本地化字段可解析；权限固定为 `activeTab`、`scripting`、`storage`、`unlimitedStorage`；没有 host permissions、content scripts、background、externally connectable、远程脚本或动态代码执行。
-- 商店素材检查：图标 16/32/48/128px；徽标 300×300；推广图 440×280 和 1400×560；两张截图均为真实 PNG、1280×800。商店详细说明长度处于官方 250–10,000 字符范围。
-- 本机 Microsoft Edge 以发布目录启动兼容检查，进程正常退出。生产包仅含 11 个运行文件，测试、构建工具及商店源素材均未进入扩展 ZIP。
+- Edge 商店发布审查：Manifest V3 本地化字段可解析；常规权限固定为 `activeTab`、`scripting`、`storage`、`unlimitedStorage`；host permissions 仅覆盖 Cloudflare 作者内容主源和 GitHub Raw 备用源；没有 content scripts、background、externally connectable、远程脚本或动态代码执行。
+- 作者页线上验证：Cloudflare 主源、GitHub Raw 备用源和 Cloudflare 隐私政策均返回 200；主源和备用 JSON 内容一致；真实浏览器正确显示 Cloudflare 来源、作者、公告和链接。
+- 商店素材检查：图标 16/32/48/128px；徽标 300×300；推广图 440×280 和 1400×560；三张截图均为真实 PNG、1280×800。商店详细说明长度处于官方 250–10,000 字符范围。
+- 本机 Microsoft Edge 以发布目录启动兼容检查，进程正常退出。生产包仅含 14 个运行文件，测试、构建工具及商店源素材均未进入扩展 ZIP。
 
 验证范围：自动模式已由产品使用者在真实流程中确认可用；自动化回归测试中的浏览器媒体与页面流程在本地测试页运行，弹窗测试使用模拟扩展接口。商店发布前的自动化测试不上传用户文件、不修改真实账号。知乎页面或服务端策略发生变化时仍可能需要更新适配。

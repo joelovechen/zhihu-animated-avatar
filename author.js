@@ -71,13 +71,15 @@ async function load() {
   for (const remote of SOURCES) {
     try {
       const data = await fetchJson(remote.url);
-      render(data); await chrome.storage.local.set({ [CACHE_KEY]: data });
+      render(data);
+      if (globalThis.chrome?.storage?.local) await globalThis.chrome.storage.local.set({ [CACHE_KEY]: data });
       source.textContent = `内容来源：${remote.name} · 更新于 ${data.updatedAt || '近期'}`;
       source.className = remote === SOURCES[0] ? 'source ok' : 'source fallback'; return;
     } catch { /* Continue to the next trusted source. */ }
   }
   try {
-    const cached = (await chrome.storage.local.get(CACHE_KEY))[CACHE_KEY];
+    if (!globalThis.chrome?.storage?.local) throw new Error('缓存不可用');
+    const cached = (await globalThis.chrome.storage.local.get(CACHE_KEY))[CACHE_KEY];
     const data = validateContent(cached); render(data);
     source.textContent = '远程源暂不可用，正在显示上次缓存'; source.className = 'source fallback'; return;
   } catch { /* Use the immutable bundled copy. */ }
