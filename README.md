@@ -2,6 +2,8 @@
 
 支持 Chrome / Edge（Chromium 111+，建议最新版）。无需构建，无外部运行依赖。
 
+本项目免费开源，采用 MIT 许可证。完整代码可审查，不包含广告、分析 SDK 或远程可执行代码。
+
 ## 安装或更新
 
 1. 打开 `chrome://extensions` 或 `edge://extensions`，启用开发者模式。
