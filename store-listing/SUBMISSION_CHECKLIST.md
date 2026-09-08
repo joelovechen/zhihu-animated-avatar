@@ -17,7 +17,7 @@
 2. Availability：选择 Public 和目标市场。
 3. Properties：选择“社交与通信”（无该项时选“生产力”）；Mature content 不勾选；按需要填写你自己的官网和支持邮箱。
 4. Privacy：从 `STORE_SUBMISSION_FIELDS_zh-CN.md` 复制单一用途、权限说明和作者页网络请求说明；远程代码选择 No。
-5. 将 `privacy-policy.html` 部署到你控制的公开 HTTPS 地址，把该地址填入 Privacy Policy URL。提交前从无登录窗口确认可访问。
+5. Privacy Policy URL 填写 `https://zhihu-avatar-author.qxzcmd.workers.dev/privacy-policy`。提交前从无登录窗口确认可访问。
 6. Store listing 只添加 `zh-CN`，复制 `STORE_LISTING_zh-CN.md` 的详细说明和搜索词，上传徽标、推广图和截图。
 7. 将 `REVIEWER_NOTES_zh-CN.txt` 内容粘贴到审核备注/测试说明区域（如果页面提供）。
 8. 预览商店页面，确认发布者名称、支持联系方式、图片和“非官方”声明正确，再提交审核。
