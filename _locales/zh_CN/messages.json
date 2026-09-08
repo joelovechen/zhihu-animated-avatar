@@ -1,0 +1,13 @@
+{
+  "extensionName": {
+    "message": "知乎动态头像助手（非官方）",
+    "description": "扩展在浏览器和商店中显示的名称"
+  },
+  "extensionDescription": {
+    "message": "在知乎当前标签页本地处理 GIF 或动态 WebP，支持自动更换头像和手动替换流程；图片仅由用户主动交给知乎原有上传流程。",
+    "description": "Edge 加载项商店短描述"
+  },
+  "actionTitle": {
+    "message": "打开知乎动态头像助手"
+  }
+}
