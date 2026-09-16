@@ -63,6 +63,8 @@
 
 单元测试：在本目录执行 `npm test`，无需 `npm install`。
 
+发布构建：执行 `python tools/build_release.py`。扩展 ZIP、商店资料包和 SHA-256 校验文件会写入 `local-artifacts/releases/current/v当前版本/`；该本地归档目录不会提交到 Git。
+
 浏览器集成测试：在本目录执行 `python -m http.server 8765 --bind 127.0.0.1`，打开 `http://127.0.0.1:8765/tests/browser.html`，点击「运行全部测试」。验证真实 ImageDecoder/Canvas 的透明动画转换、帧时长、逐字节替换、自动填图保存、动态文件输入框、取消和超时回退。测试使用本地合成素材，不访问知乎。
 
 `tests/preview.html` 用开发用的模拟 Chrome 接口测试实际弹窗交互；它不是扩展环境，不能代替真实浏览器扩展与知乎联调。发布 ZIP 不包含测试文件。

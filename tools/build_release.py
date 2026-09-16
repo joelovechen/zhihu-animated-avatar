@@ -8,8 +8,9 @@ import sys
 
 ROOT = Path(__file__).resolve().parents[1]
 VERSION = "2.2.0"
-OUT = ROOT.parent / f"zhihu-animated-avatar-edge-v{VERSION}.zip"
-KIT = ROOT.parent / f"zhihu-animated-avatar-edge-store-kit-v{VERSION}.zip"
+RELEASE_DIR = ROOT / "local-artifacts" / "releases" / "current" / f"v{VERSION}"
+OUT = RELEASE_DIR / f"zhihu-animated-avatar-edge-v{VERSION}.zip"
+KIT = RELEASE_DIR / f"zhihu-animated-avatar-edge-store-kit-v{VERSION}.zip"
 FILES = [
     "manifest.json",
     "popup.html",
@@ -92,6 +93,7 @@ if re.search(r"<script[^>]+src=[\"']https?://", source, re.I):
 if "实验性" in source or "experimental" in source.lower():
     fail("Experimental label remains in the production package")
 
+RELEASE_DIR.mkdir(parents=True, exist_ok=True)
 if OUT.exists():
     OUT.unlink()
 with ZipFile(OUT, "w", ZIP_DEFLATED) as archive:
@@ -124,7 +126,7 @@ with ZipFile(KIT, "w", ZIP_DEFLATED) as archive:
         archive.write(ROOT / item, item)
 
 digest = hashlib.sha256(OUT.read_bytes()).hexdigest()
-(ROOT.parent / f"zhihu-animated-avatar-edge-v{VERSION}.sha256.txt").write_text(
+(RELEASE_DIR / f"zhihu-animated-avatar-edge-v{VERSION}.sha256.txt").write_text(
     f"{digest}  {OUT.name}\n", encoding="ascii"
 )
 
